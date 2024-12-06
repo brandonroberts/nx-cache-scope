@@ -1,27 +1,27 @@
 {
-  "name": "my-app",
+  "name": "my-scoped-app",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
   "prefix": "app",
-  "sourceRoot": "apps/my-app/src",
+  "sourceRoot": "apps/my-scoped-app/src",
   "tags": [],
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:application",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "node_modules/my-app",
-        "index": "apps/my-app/src/index.html",
-        "browser": "apps/my-app/src/main.ts",
+        "outputPath": "node_modules/@my-scoped-app",
+        "index": "apps/my-scoped-app/src/index.html",
+        "browser": "apps/my-scoped-app/src/main.ts",
         "polyfills": ["zone.js"],
-        "tsConfig": "apps/my-app/tsconfig.app.json",
+        "tsConfig": "apps/my-scoped-app/tsconfig.app.json",
         "assets": [
           {
             "glob": "**/*",
-            "input": "apps/my-app/public"
+            "input": "apps/my-scoped-app/public"
           }
         ],
-        "styles": ["apps/my-app/src/styles.css"],
+        "styles": ["apps/my-scoped-app/src/styles.css"],
         "scripts": []
       },
       "configurations": {
@@ -52,10 +52,10 @@
       "executor": "@angular-devkit/build-angular:dev-server",
       "configurations": {
         "production": {
-          "buildTarget": "my-app:build:production"
+          "buildTarget": "my-scoped-app:build:production"
         },
         "development": {
-          "buildTarget": "my-app:build:development"
+          "buildTarget": "my-scoped-app:build:development"
         }
       },
       "defaultConfiguration": "development"
@@ -63,7 +63,7 @@
     "extract-i18n": {
       "executor": "@angular-devkit/build-angular:extract-i18n",
       "options": {
-        "buildTarget": "my-app:build"
+        "buildTarget": "my-scoped-app:build"
       }
     },
     "lint": {
@@ -73,14 +73,14 @@
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "jestConfig": "apps/my-app/jest.config.ts"
+        "jestConfig": "apps/my-scoped-app/jest.config.ts"
       }
     },
     "serve-static": {
       "executor": "@nx/web:file-server",
       "options": {
-        "buildTarget": "my-app:build",
-        "staticFilePath": "dist/apps/my-app/browser",
+        "buildTarget": "my-scoped-app:build",
+        "staticFilePath": "dist/apps/my-scoped-app/browser",
         "spa": true
       }
     }
